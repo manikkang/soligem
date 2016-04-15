@@ -1,0 +1,15 @@
+<%= render 'spree/admin/shared/product_tabs', :current => 'Product Properties' %>
+<%= form_tag(admin_cde_path) do %>
+
+<%@arr.uniq.each_with_index do |a,i|%>
+	<div><%=label_tag a.name%>
+	
+	<%@label.each do |l|%>
+	<%= label_tag l.label %>
+<%= check_box_tag "lab[#{a.id}][]", l.id %>
+	<%end%>
+	<%end%>
+	</div>
+<%= submit_tag "Confirm" %>
+
+	<%end%>

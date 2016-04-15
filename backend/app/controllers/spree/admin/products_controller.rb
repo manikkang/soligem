@@ -16,7 +16,29 @@ module Spree
         session[:return_to] = request.url
         respond_with(@collection)
       end
+      def abc
+        @arr = []
+        @product=Product.friendly.find(params[:id])
+       @product.variants.each do |a|
+        @arr << a.option_values.select{ |b| b.option_type.id == 4}.first 
 
+      end
+      @label=Label.all
+      end
+      def cde
+        params[:lab].each do |a|
+          b=a.first
+          a.second.each do |c|
+            byebug
+            @ov=OptionvalueLabel.new
+            @ov.product_id = Product.friendly.find(params[:id]).id
+            @ov.label_id = c
+            @ov.option_value_id = b
+            @ov.save
+            end
+        end
+      
+      end
       def update
         if params[:product][:taxon_ids].present?
           params[:product][:taxon_ids] = params[:product][:taxon_ids].split(',')
