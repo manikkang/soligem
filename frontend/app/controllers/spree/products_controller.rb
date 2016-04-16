@@ -14,9 +14,14 @@ module Spree
       @taxonomies = Spree::Taxonomy.includes(root: :children)
     end
 
-    def show
+   def show
       @variants = @product.variants_including_master.active(current_currency).includes([:option_values, :images])
       @product_properties = @product.product_properties.includes(:property)
+       @arr = []
+      @product.variants.each do |a|
+        @arr << a.option_values.select{ |b| b.option_type.id == 2}.first 
+      end
+     
       @taxon = Spree::Taxon.find(params[:taxon_id]) if params[:taxon_id]
     end
 

@@ -20,7 +20,7 @@
       <%= content_tag :li, :class => ('active' if current == 'Stock Management') do %>
         <%= link_to_with_icon 'cubes', Spree.t(:stock_management), admin_product_stock_url(@product) %>
       <% end if can?(:admin, Spree::StockItem) %>
-       <%=link_to "Add Labels",admin_abc_path(@product)%>
+       <%=link_to "Add Labels",admin_abc_path(@product)%>  
     </ul>
   </nav>
 <% end %>
