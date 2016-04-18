@@ -2,7 +2,7 @@ Spree::Core::Engine.add_routes do
   root to: 'home#index'
 
   resources :products, only: [:index, :show]
-
+   get '/product/:product_id/color/:color_id', to: 'products#color', as: :color
   get '/locale/set', to: 'locale#set'
 
   # non-restful checkout stuff

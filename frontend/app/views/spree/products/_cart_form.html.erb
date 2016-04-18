@@ -1,40 +1,17 @@
 <%= form_for :order, :url => populate_orders_path do |f| %>
   <div id="inside-product-cart-form" data-hook="inside_product_cart_form" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 
-       <% if @product.variants_and_option_values(current_currency).any? %>
+    <% if @product.variants_and_option_values(current_currency).any? %>
       <div id="product-variants" class="columns five alpha">
         <h6 class="product-section-title"><%= Spree.t(:variants) %></h6>
         <ul>
-          
-            
-            <%@arr.uniq.each do |color|%>
-            
-            <li><%=color.name%>
-            <% @color_variants=@product.variants.select { |v| v.option_values.include? Spree::OptionValue.find_by_name(color.name) }%>
-            <ul>
-              <%@color_variants.each do |cv|%>
-           
-              <%cv.option_values.select{ |b| b.option_type.id == 4}.each do |cvo|%>
+           <%@arr.uniq.each do |color|%>
+           <li> <%=link_to color.name,color_path(@product.id,color.id), :remote => true%></li>
 
-             <li>
-             <%=check_box_tag "order[]",cv.id %> 
-             
-             <%=cvo.name%>
-             <%=cv.cost_price%>
-              <%= number_field_tag "quantity[]", 0, :class => 'title', :min => 1 %>
-             </li>
-              <%end%>
-              <%end%>
-            </ul>
-            </li>
             <%end%>
-              
-
-             
-            
-          
         </ul>
       </div>
+
     <% else %>
       <%= hidden_field_tag "variant_id", @product.master.id %>
     <% end %>
@@ -60,7 +37,7 @@
         </div>
 
         <div class="add-to-cart">
-          <%= number_field_tag :quantity, 1, :class => 'title', :min => 1 %>
+         
           <%= button_tag :class => 'large primary', :id => 'add-to-cart-button', :type => :submit do %>
             <%= Spree.t(:add_to_cart) %>
           <% end %>
@@ -73,4 +50,5 @@
         </div>
     <% end %>
   </div>
+  <div id="insert"><%=render partial: "inserts", :locals => {:color => @arr.uniq.first}%></div>
 <% end %>

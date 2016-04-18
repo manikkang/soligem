@@ -13,6 +13,11 @@ module Spree
       @products = @searcher.retrieve_products
       @taxonomies = Spree::Taxonomy.includes(root: :children)
     end
+     def color
+      @product=Product.find(params[:product_id])    
+      @color=OptionValue.find(params[:color_id])
+
+    end
 
    def show
       @variants = @product.variants_including_master.active(current_currency).includes([:option_values, :images])

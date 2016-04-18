@@ -1,0 +1,18 @@
+<% @color_variants=@product.variants.select { |v| v.option_values.include? Spree::OptionValue.find_by_name(color.name) }%>
+           
+           <ul>
+             <%@color_variants.each do |cv|%>
+          
+             <%cv.option_values.select{ |b| b.option_type.id == 4}.each do |cvo|%>
+
+            <li>
+            <%=check_box_tag "variant",cv.id %> 
+            
+            <%=cvo.name%>
+            <%=cv.price%>
+            <%= number_field_tag "order[#{cv.id}]", 0, :class => 'title', :min => 1 %>
+            </li>
+            
+             <%end%>
+            
+             <%end%>
