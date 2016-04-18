@@ -45,7 +45,7 @@ module Spree
       order   = current_order(create_order_if_necessary: true)
      
       # 2,147,483,647 is crazy. See issue https://github.com/spree/spree/issues/2695.
-      params[:order].each do |variant_id,quantity|
+      [params[:variant],params[:quantity]].transpose.each do |variant_id,quantity|
        variant = Spree::Variant.find(variant_id)
       order.contents.add(variant, quantity)
       

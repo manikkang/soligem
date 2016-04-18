@@ -6,11 +6,11 @@
              <%cv.option_values.select{ |b| b.option_type.id == 4}.each do |cvo|%>
 
             <li>
-            <%=check_box_tag "variant",cv.id ,false %> 
+            <%=check_box_tag "variant[]",cv.id ,false %> 
             
             <%=cvo.name%>
             <%=cv.price%>
-            <%= number_field_tag "order[#{cv.id}]", 0, :class => 'title', :min => 1 %>
+            <%= number_field_tag "quantity[]", 0, :class => 'title', :min => 1 %>
             </li>
             
              <%end%>
