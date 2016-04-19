@@ -10,7 +10,7 @@
             <%= render :partial => 'image' %>
           </div>
           <div id="thumbnails" data-hook>
-            <%= render :partial => 'thumbnails' %>
+           <%= render :partial => 'thumbnails',:locals => {:color => @arr.uniq.first} %>
           </div>
         </div>
 

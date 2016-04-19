@@ -1,1 +1,7 @@
 $('#insert').html("<%=escape_javascript(render partial: 'inserts', locals: { color: @color })%>");
+$('#thumbnails').html("<%=escape_javascript(render partial: 'thumbnails', locals: { color: @color })%>");
+ $('.thumbnails').find("li").eq(0).addClass("selected")
+$(".thumbnails").find("li").mouseenter(function(e){
+  
+  $("#main-image img").attr ("src",$(e.currentTarget).find("a").attr('href'))
+  });$('#insert').html("<%=escape_javascript(render partial: 'inserts', locals: { color: @color })%>");

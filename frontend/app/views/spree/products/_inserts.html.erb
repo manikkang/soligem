@@ -10,7 +10,7 @@
             
             <%=cvo.name%>
             <%=cv.price%>
-            <%= number_field_tag "quantity[]", 0, :class => 'title', :min => 1 %>
+            <%= number_field_tag "quantity[]", 0, :class => 'title', :min => 1 ,disabled: true%>
             </li>
             
              <%end%>
