@@ -1,0 +1,24 @@
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+    <%@optionvalues.each do |optionvalue|%>
+    
+    <% @insert=Spree::OptionValue.find(optionvalue)%>
+  <div>
+    <div><%=@insert.name%></div>
+    <% @labels=OptionvalueLabel.where("option_value_id = ? and product_id =?",optionvalue,@product.id)%> 
+    <%@labels.each do |label|%>
+      <div>  
+      <div>
+      <%=label.label.label%>
+      <input type="<%=label.label.input_type%>" placeholder="<%=label.label.input_type%>">
+      </div>
+
+    <%end%>
+   
+    <%end%>
+    </div>
+    </div>
+    </div>
+  </div>
+</div>

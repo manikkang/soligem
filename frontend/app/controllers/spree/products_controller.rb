@@ -29,6 +29,17 @@ module Spree
      
       @taxon = Spree::Taxon.find(params[:taxon_id]) if params[:taxon_id]
     end
+    def label
+      @optionvalues= []
+    @product=Product.find(params[:product_id]) 
+     params[:variants].each do |variant|
+     @variant=Variant.find(variant)
+    @optionvalues << @variant.option_values.select{|b| b.option_type.id == 4}.first.id
+   end
+
+
+
+    end
 
     private
 

@@ -51,4 +51,26 @@
     <% end %>
   </div>
   <div id="insert"><%=render partial: "inserts", :locals => {:color => @arr.uniq.first}%></div>
+  
+ 
+  <div id="labels"></div>
 <% end %>
+<button id="addlabel">Add Label</button>
+<script type="text/javascript">
+  $(document).ready(function(){
+   
+    $("#addlabel").click(function(){
+       var checkboxesChecked = []
+      $("input[type=checkbox]:checked").each(function(){
+       
+    checkboxesChecked.push($(this).val());
+           });
+      
+      $.ajax({
+         type: 'GET',
+           url: '/labels',
+    data: { variants: checkboxesChecked,product_id: <%=@product.id%>}
+   });
+    })
+  })
+</script>
