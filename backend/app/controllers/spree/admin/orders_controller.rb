@@ -135,6 +135,13 @@ module Spree
         flash[:success] = Spree.t(:order_resumed)
         redirect_to :back
       end
+      def data
+        @order=Order.find_by_number(params[:id])
+       @optionname=[]
+       @order.labeldata.each do |labeldata|
+        @optionname << labeldata.optionvalue_label.option_value.name
+
+       end
 
       def approve
         @order.contents.approve(user: try_spree_current_user)
