@@ -36,7 +36,8 @@ module Spree
     belongs_to :created_by, class_name: Spree::UserClassHandle.new
     belongs_to :approver, class_name: Spree::UserClassHandle.new
     belongs_to :canceler, class_name: Spree::UserClassHandle.new
-
+     has_many :labeldata
+    has_many :optionvalue_label ,through: :labeldata
     belongs_to :bill_address, foreign_key: :bill_address_id, class_name: 'Spree::Address'
     alias_attribute :billing_address, :bill_address
 
