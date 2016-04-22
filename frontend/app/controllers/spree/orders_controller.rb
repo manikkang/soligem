@@ -41,7 +41,7 @@ module Spree
 
     # Adds a new item to the order (creating a new order if none already exists)
     def populate
-     
+     byebug
       order   = current_order(create_order_if_necessary: true)
      
       # 2,147,483,647 is crazy. See issue https://github.com/spree/spree/issues/2695.

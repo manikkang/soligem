@@ -3,7 +3,7 @@ Spree::Core::Engine.add_routes do
     get '/search/users', to: "search#users", as: :search_users
     get '/search/products', to: "search#products", as: :search_products
     get '/abc/:id',to: "products#abc",as: :abc
-     get '/cde',to: "products#cde",as: :cde
+     post '/cde/:id',to: "products#cde",as: :cde
     resources :dashboards, only: [] do
       collection do
         get :home
