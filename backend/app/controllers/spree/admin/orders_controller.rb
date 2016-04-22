@@ -140,7 +140,7 @@ module Spree
        @optionname=[]
        @order.labeldata.each do |labeldata|
         @optionname << labeldata.optionvalue_label.option_value.name
-
+       end
        end
 
       def approve
