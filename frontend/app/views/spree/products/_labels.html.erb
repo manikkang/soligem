@@ -11,14 +11,22 @@
       <div>  
       <div>
       <%=label.label.label%>
-      <input type="<%=label.label.input_type%>" placeholder="<%=label.label.input_type value%>">
+     <%=text_field_tag  "data[#{label.id}]",nil,:placeholder => label.label.placeholder%>
       </div>
 
     <%end%>
    
     <%end%>
+
     </div>
     </div>
     </div>
   </div>
 </div>
+ <div class="add-to-cart">
+         
+          <%= button_tag :class => 'large primary', :id => 'add-to-cart-button', :type => :submit do %>
+            <%= Spree.t(:add_to_cart) %>
+          <% end %>
+        </div>
+      </div>
