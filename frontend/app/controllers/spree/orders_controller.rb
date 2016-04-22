@@ -41,17 +41,25 @@ module Spree
 
     # Adds a new item to the order (creating a new order if none already exists)
     def populate
-     byebug
+
       order   = current_order(create_order_if_necessary: true)
      
+   
       # 2,147,483,647 is crazy. See issue https://github.com/spree/spree/issues/2695.
       [params[:variant],params[:quantity]].transpose.each do |variant_id,quantity|
        variant = Spree::Variant.find(variant_id)
       order.contents.add(variant, quantity)
-      
+   
      end
+     
+        params[:data].each do |data|
+          @data=Labeldatum.new
+          @data.order_id=order.id
+          @data.optionvalue_label_id=data.first
+          @data.data=data.second
+          @data.save
+        end
       
-        
         respond_with(order) do |format|
           format.html { redirect_to cart_path }
         

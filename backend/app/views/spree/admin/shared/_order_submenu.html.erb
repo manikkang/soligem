@@ -59,5 +59,6 @@
         <%= link_to_with_icon 'cancel', Spree.t(:cancel_inventory), admin_order_cancellations_path(@order) %>
       <% end %>
     <% end %>
+    <%=link_to "order data",admin_data_path(@order)%>
   </ul>
 </nav>

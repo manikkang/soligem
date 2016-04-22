@@ -1,0 +1,11 @@
+<%= render :partial => 'spree/admin/shared/order_tabs', :locals => { :current => 'Shipments' } %>
+
+
+<%@order.labeldata.each do |labeldata|%> 
+
+<div>
+
+<%=labeldata.optionvalue_label.option_value.name%>
+<%=labeldata.optionvalue_label.label.label%>=
+<%=labeldata.data%></div>
+  <%end%>
