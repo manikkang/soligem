@@ -4,4 +4,4 @@ $('#thumbnails').html("<%=escape_javascript(render partial: 'thumbnails', locals
 $(".thumbnails").find("li").mouseenter(function(e){
   
   $("#main-image img").attr ("src",$(e.currentTarget).find("a").attr('href'))
-  });$('#insert').html("<%=escape_javascript(render partial: 'inserts', locals: { color: @color })%>");
+  });

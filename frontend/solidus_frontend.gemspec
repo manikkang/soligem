@@ -1,31 +1,54 @@
-# encoding: UTF-8
-require_relative '../core/lib/spree/core/version.rb'
+# -*- encoding: utf-8 -*-
+# stub: solidus_frontend 1.3.0.alpha ruby lib
 
 Gem::Specification.new do |s|
-  s.platform    = Gem::Platform::RUBY
-  s.name        = 'solidus_frontend'
-  s.version     = Spree.solidus_version
-  s.summary     = 'Cart and storefront for the Solidus e-commerce project.'
-  s.description = s.summary
+  s.name = "solidus_frontend"
+  s.version = "1.3.0.alpha"
 
-  s.required_ruby_version = '>= 2.1.0'
-  s.author      = 'Solidus Team'
-  s.email       = 'contact@solidus.io'
-  s.homepage    = 'http://solidus.io/'
-  s.rubyforge_project = 'solidus_frontend'
+  s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
+  s.require_paths = ["lib"]
+  s.authors = ["Solidus Team"]
+  s.date = "2016-04-16"
+  s.description = "Cart and storefront for the Solidus e-commerce project."
+  s.email = "contact@solidus.io"
+  s.files = ["Gemfile", "LICENSE", "README.md", "Rakefile", "app/assets/images/credit_cards/amex_cid.gif", "app/assets/images/credit_cards/credit_card.gif", "app/assets/images/credit_cards/discover_cid.gif", "app/assets/images/credit_cards/icons/american_express.png", "app/assets/images/credit_cards/icons/cirrus.png", "app/assets/images/credit_cards/icons/delta.png", "app/assets/images/credit_cards/icons/diners_club.png", "app/assets/images/credit_cards/icons/directdebit.png", "app/assets/images/credit_cards/icons/discover.png", "app/assets/images/credit_cards/icons/egold.png", "app/assets/images/credit_cards/icons/maestro.png", "app/assets/images/credit_cards/icons/master.png", "app/assets/images/credit_cards/icons/paypal.png", "app/assets/images/credit_cards/icons/solo.png", "app/assets/images/credit_cards/icons/switch.png", "app/assets/images/credit_cards/icons/visa.png", "app/assets/images/credit_cards/icons/visaelectron.png", "app/assets/images/credit_cards/icons/westernunion.png", "app/assets/images/credit_cards/icons/wirecard.png", "app/assets/images/credit_cards/icons/worldpay.png", "app/assets/images/credit_cards/master_cid.jpg", "app/assets/images/credit_cards/visa_cid.gif", "app/assets/images/favicon.ico", "app/assets/images/icons/add-to-cart.png", "app/assets/images/icons/checkout.png", "app/assets/images/icons/delete.png", "app/assets/images/icons/update.png", "app/assets/images/spinner.gif", "app/assets/images/spree/frontend/cart.png", "app/assets/javascripts/spree/frontend.js", "app/assets/javascripts/spree/frontend/cart.js.coffee", "app/assets/javascripts/spree/frontend/checkout.js.coffee", "app/assets/javascripts/spree/frontend/checkout/address.js.coffee", "app/assets/javascripts/spree/frontend/checkout/payment.js.coffee", "app/assets/javascripts/spree/frontend/product.js.coffee", "app/assets/stylesheets/spree/frontend.css", "app/assets/stylesheets/spree/frontend/_skeleton.scss", "app/assets/stylesheets/spree/frontend/_variables.scss", "app/assets/stylesheets/spree/frontend/screen.css.scss", "app/controllers/spree/checkout_controller.rb", "app/controllers/spree/content_controller.rb", "app/controllers/spree/home_controller.rb", "app/controllers/spree/locale_controller.rb", "app/controllers/spree/orders_controller.rb", "app/controllers/spree/products_controller.rb", "app/controllers/spree/store_controller.rb", "app/controllers/spree/taxons_controller.rb", "app/models/spree/frontend_configuration.rb", "app/views/spree/address/_form.html.erb", "app/views/spree/address/_form_hidden.html.erb", "app/views/spree/checkout/_address.html.erb", "app/views/spree/checkout/_confirm.html.erb", "app/views/spree/checkout/_delivery.html.erb", "app/views/spree/checkout/_payment.html.erb", "app/views/spree/checkout/_summary.html.erb", "app/views/spree/checkout/edit.html.erb", "app/views/spree/checkout/payment/_check.html.erb", "app/views/spree/checkout/payment/_gateway.html.erb", "app/views/spree/content/cvv.html.erb", "app/views/spree/home/index.html.erb", "app/views/spree/layouts/spree_application.html.erb", "app/views/spree/orders/_adjustment_row.html.erb", "app/views/spree/orders/_adjustments.html.erb", "app/views/spree/orders/_form.html.erb", "app/views/spree/orders/_line_item.html.erb", "app/views/spree/orders/edit.html.erb", "app/views/spree/orders/show.html.erb", "app/views/spree/payments/_payment.html.erb", "app/views/spree/products/_cart_form.html.erb", "app/views/spree/products/_image.html.erb", "app/views/spree/products/_promotions.html.erb", "app/views/spree/products/_properties.html.erb", "app/views/spree/products/_taxons.html.erb", "app/views/spree/products/_thumbnails.html.erb", "app/views/spree/products/index.html.erb", "app/views/spree/products/show.html.erb", "app/views/spree/shared/_address.html.erb", "app/views/spree/shared/_filters.html.erb", "app/views/spree/shared/_footer.html.erb", "app/views/spree/shared/_google_analytics.html.erb", "app/views/spree/shared/_head.html.erb", "app/views/spree/shared/_header.html.erb", "app/views/spree/shared/_link_to_cart.html.erb", "app/views/spree/shared/_main_nav_bar.html.erb", "app/views/spree/shared/_nav_bar.html.erb", "app/views/spree/shared/_order_details.html.erb", "app/views/spree/shared/_products.html.erb", "app/views/spree/shared/_search.html.erb", "app/views/spree/shared/_shipment_tracking.html.erb", "app/views/spree/shared/_sidebar.html.erb", "app/views/spree/shared/_taxonomies.html.erb", "app/views/spree/shared/unauthorized.html.erb", "app/views/spree/store/cart_link.html.erb", "app/views/spree/taxons/_taxon.html.erb", "app/views/spree/taxons/show.html.erb", "config/initializers/assets.rb", "config/initializers/canonical_rails.rb", "config/routes.rb", "lib/solidus_frontend.rb", "lib/spree/frontend.rb", "lib/spree/frontend/engine.rb", "lib/spree/frontend/middleware/seo_assist.rb", "lib/spree_frontend.rb", "lib/tasks/rake_util.rb", "lib/tasks/taxon.rake", "script/rails", "solidus_frontend.gemspec", "spec/controllers/controller_extension_spec.rb", "spec/controllers/controller_helpers_spec.rb", "spec/controllers/spree/checkout_controller_spec.rb", "spec/controllers/spree/checkout_controller_with_views_spec.rb", "spec/controllers/spree/content_controller_spec.rb", "spec/controllers/spree/current_order_tracking_spec.rb", "spec/controllers/spree/home_controller_spec.rb", "spec/controllers/spree/orders_controller_ability_spec.rb", "spec/controllers/spree/orders_controller_spec.rb", "spec/controllers/spree/orders_controller_transitions_spec.rb", "spec/controllers/spree/products_controller_spec.rb", "spec/controllers/spree/taxons_controller_spec.rb", "spec/features/address_spec.rb", "spec/features/automatic_promotion_adjustments_spec.rb", "spec/features/caching/products_spec.rb", "spec/features/caching/taxons_spec.rb", "spec/features/cart_spec.rb", "spec/features/checkout_spec.rb", "spec/features/checkout_unshippable_spec.rb", "spec/features/coupon_code_spec.rb", "spec/features/currency_spec.rb", "spec/features/free_shipping_promotions_spec.rb", "spec/features/locale_spec.rb", "spec/features/order_spec.rb", "spec/features/products_spec.rb", "spec/features/promotion_code_invalidation_spec.rb", "spec/features/quantity_promotions_spec.rb", "spec/features/taxons_spec.rb", "spec/features/template_rendering_spec.rb", "spec/fixtures/thinking-cat.jpg", "spec/helpers/base_helper_spec.rb", "spec/spec_helper.rb", "spec/support/shared_contexts/checkout_setup.rb", "spec/support/shared_contexts/custom_products.rb", "spec/support/shared_contexts/product_prototypes.rb", "spec/views/spree/checkout/_summary_spec.rb", "vendor/assets/javascripts/jquery.validate/additional-methods.min.js", "vendor/assets/javascripts/jquery.validate/jquery.validate.min.js", "vendor/assets/javascripts/jquery.validate/localization/messages_ar.js", "vendor/assets/javascripts/jquery.validate/localization/messages_bg.js", "vendor/assets/javascripts/jquery.validate/localization/messages_ca.js", "vendor/assets/javascripts/jquery.validate/localization/messages_cs.js", "vendor/assets/javascripts/jquery.validate/localization/messages_da.js", "vendor/assets/javascripts/jquery.validate/localization/messages_de.js", "vendor/assets/javascripts/jquery.validate/localization/messages_el.js", "vendor/assets/javascripts/jquery.validate/localization/messages_es.js", "vendor/assets/javascripts/jquery.validate/localization/messages_et.js", "vendor/assets/javascripts/jquery.validate/localization/messages_eu.js", "vendor/assets/javascripts/jquery.validate/localization/messages_fa.js", "vendor/assets/javascripts/jquery.validate/localization/messages_fi.js", "vendor/assets/javascripts/jquery.validate/localization/messages_fr.js", "vendor/assets/javascripts/jquery.validate/localization/messages_ge.js", "vendor/assets/javascripts/jquery.validate/localization/messages_he.js", "vendor/assets/javascripts/jquery.validate/localization/messages_hr.js", "vendor/assets/javascripts/jquery.validate/localization/messages_hu.js", "vendor/assets/javascripts/jquery.validate/localization/messages_it.js", "vendor/assets/javascripts/jquery.validate/localization/messages_ja.js", "vendor/assets/javascripts/jquery.validate/localization/messages_ka.js", "vendor/assets/javascripts/jquery.validate/localization/messages_kk.js", "vendor/assets/javascripts/jquery.validate/localization/messages_ko.js", "vendor/assets/javascripts/jquery.validate/localization/messages_lt.js", "vendor/assets/javascripts/jquery.validate/localization/messages_lv.js", "vendor/assets/javascripts/jquery.validate/localization/messages_ms.js", "vendor/assets/javascripts/jquery.validate/localization/messages_nl.js", "vendor/assets/javascripts/jquery.validate/localization/messages_no.js", "vendor/assets/javascripts/jquery.validate/localization/messages_pl.js", "vendor/assets/javascripts/jquery.validate/localization/messages_ptbr.js", "vendor/assets/javascripts/jquery.validate/localization/messages_ptpt.js", "vendor/assets/javascripts/jquery.validate/localization/messages_ro.js", "vendor/assets/javascripts/jquery.validate/localization/messages_ru.js", "vendor/assets/javascripts/jquery.validate/localization/messages_se.js", "vendor/assets/javascripts/jquery.validate/localization/messages_si.js", "vendor/assets/javascripts/jquery.validate/localization/messages_sk.js", "vendor/assets/javascripts/jquery.validate/localization/messages_sl.js", "vendor/assets/javascripts/jquery.validate/localization/messages_sr.js", "vendor/assets/javascripts/jquery.validate/localization/messages_sv.js", "vendor/assets/javascripts/jquery.validate/localization/messages_th.js", "vendor/assets/javascripts/jquery.validate/localization/messages_tr.js", "vendor/assets/javascripts/jquery.validate/localization/messages_tw.js", "vendor/assets/javascripts/jquery.validate/localization/messages_uk.js", "vendor/assets/javascripts/jquery.validate/localization/messages_vi.js", "vendor/assets/javascripts/jquery.validate/localization/messages_zh.js", "vendor/assets/javascripts/jquery.validate/localization/messages_zhtw.js", "vendor/assets/javascripts/jquery.validate/localization/methods_de.js", "vendor/assets/javascripts/jquery.validate/localization/methods_nl.js", "vendor/assets/javascripts/jquery.validate/localization/methods_pt.js"]
+  s.homepage = "http://solidus.io/"
+  s.required_ruby_version = Gem::Requirement.new(">= 2.1.0")
+  s.requirements = ["none"]
+  s.rubyforge_project = "solidus_frontend"
+  s.rubygems_version = "2.4.8"
+  s.summary = "Cart and storefront for the Solidus e-commerce project."
 
-  s.files        = `git ls-files`.split("\n")
-  s.require_path = 'lib'
-  s.requirements << 'none'
+  if s.respond_to? :specification_version then
+    s.specification_version = 4
 
-  s.add_dependency 'solidus_api', s.version
-  s.add_dependency 'solidus_core', s.version
-
-  s.add_dependency 'canonical-rails', '~> 0.0.4'
-  s.add_dependency 'jquery-rails'
-  s.add_dependency 'sass-rails'
-  s.add_dependency 'coffee-rails'
-  s.add_dependency 'font-awesome-rails', '~> 4.0'
-
-  s.add_development_dependency 'capybara-accessible'
+    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<solidus_api>, ["= 1.3.0.alpha"])
+      s.add_runtime_dependency(%q<solidus_core>, ["= 1.3.0.alpha"])
+      s.add_runtime_dependency(%q<canonical-rails>, ["~> 0.0.4"])
+      s.add_runtime_dependency(%q<jquery-rails>, [">= 0"])
+      s.add_runtime_dependency(%q<sass-rails>, [">= 0"])
+      s.add_runtime_dependency(%q<coffee-rails>, [">= 0"])
+      s.add_runtime_dependency(%q<font-awesome-rails>, ["~> 4.0"])
+      s.add_development_dependency(%q<capybara-accessible>, [">= 0"])
+    else
+      s.add_dependency(%q<solidus_api>, ["= 1.3.0.alpha"])
+      s.add_dependency(%q<solidus_core>, ["= 1.3.0.alpha"])
+      s.add_dependency(%q<canonical-rails>, ["~> 0.0.4"])
+      s.add_dependency(%q<jquery-rails>, [">= 0"])
+      s.add_dependency(%q<sass-rails>, [">= 0"])
+      s.add_dependency(%q<coffee-rails>, [">= 0"])
+      s.add_dependency(%q<font-awesome-rails>, ["~> 4.0"])
+      s.add_dependency(%q<capybara-accessible>, [">= 0"])
+    end
+  else
+    s.add_dependency(%q<solidus_api>, ["= 1.3.0.alpha"])
+    s.add_dependency(%q<solidus_core>, ["= 1.3.0.alpha"])
+    s.add_dependency(%q<canonical-rails>, ["~> 0.0.4"])
+    s.add_dependency(%q<jquery-rails>, [">= 0"])
+    s.add_dependency(%q<sass-rails>, [">= 0"])
+    s.add_dependency(%q<coffee-rails>, [">= 0"])
+    s.add_dependency(%q<font-awesome-rails>, ["~> 4.0"])
+    s.add_dependency(%q<capybara-accessible>, [">= 0"])
+  end
 end

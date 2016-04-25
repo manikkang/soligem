@@ -2,8 +2,10 @@ module Spree
   class OptionValue < Spree::Base
     belongs_to :option_type, class_name: 'Spree::OptionType', inverse_of: :option_values
     acts_as_list scope: :option_type
-    has_many :optionvalue_labels
+     has_many :optionvalue_labels
     has_many :labels ,through: :optionvalue_labels
+    
+     
     has_many :option_values_variants, dependent: :destroy
     has_many :variants, through: :option_values_variants
 

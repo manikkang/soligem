@@ -65,7 +65,7 @@ module Spree
         
       end
     end
-
+    
     def empty
       if @order = current_order
         @order.empty!
