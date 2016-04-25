@@ -10,7 +10,7 @@ Spree::Core::Engine.add_routes do
         get :home
       end
     end
-
+    resources :labels
     resources :promotions do
       resources :promotion_rules
       resources :promotion_actions

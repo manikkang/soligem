@@ -1,0 +1,25 @@
+<% content_for :page_title do %>
+  <%= Label.model_name.human(count: :other) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <% if can?(:create, Label) %>
+    <li>
+      <%= button_link_to Spree.t(:new_label), new_admin_label_path, :icon => 'plus', :id => 'admin_new_taxonomy_link' %>
+    </li>
+  <% end %>
+<% end %>
+
+<% if @labels.any? %>
+<div id="list-taxonomies" data-hook>
+  <%= render 'list' %>
+</div>
+<% else %>
+  <div class="alpha twelve columns no-objects-found">
+    <%= render 'spree/admin/shared/no_objects_found',
+                 resource: Spree::Taxonomy,
+                 new_resource_url: new_object_url %>
+  </div>
+<% end %>
+
+
