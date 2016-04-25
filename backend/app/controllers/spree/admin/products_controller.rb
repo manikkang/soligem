@@ -29,7 +29,7 @@ module Spree
         params[:lab].each do |a|
           b=a.first
           a.second.each do |c|
-            byebug
+           
             @ov=OptionvalueLabel.new
             @ov.product_id = Product.friendly.find(params[:id]).id
             @ov.label_id = c
