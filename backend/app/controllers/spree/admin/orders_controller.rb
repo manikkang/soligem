@@ -10,6 +10,7 @@ module Spree
       respond_to :html
 
       def index
+        
         query_present = params[:q]
         params[:q] ||= {}
         params[:q][:completed_at_not_null] ||= '1' if Spree::Config[:show_only_complete_orders_by_default]
@@ -74,7 +75,7 @@ module Spree
 
       def edit
         require_ship_address
-
+       
         unless @order.completed?
           @order.refresh_shipment_rates
         end
@@ -135,13 +136,6 @@ module Spree
         flash[:success] = Spree.t(:order_resumed)
         redirect_to :back
       end
-      def data
-        @order=Order.find_by_number(params[:id])
-       @optionname=[]
-       @order.labeldata.each do |labeldata|
-        @optionname << labeldata.optionvalue_label.option_value.name
-       end
-       end
 
       def approve
         @order.contents.approve(user: try_spree_current_user)
@@ -171,7 +165,16 @@ module Spree
 
         respond_with(@order) { |format| format.html { redirect_to :back } }
       end
+      def data
+        @order=Order.find_by_number(params[:id])
+       @optionname=[]
+       @order.labeldata.each do |labeldata|
+        @optionname << labeldata.optionvalue_label.option_value.name
 
+       end
+
+        
+      end
       private
 
       def order_params

@@ -131,6 +131,7 @@ class Spree::Admin::ResourceController < Spree::Admin::BaseController
   end
 
   def load_resource
+      
     if member_action?
       @object ||= load_resource_instance
 
@@ -232,7 +233,7 @@ class Spree::Admin::ResourceController < Spree::Admin::BaseController
 
   def collection_url(options = {})
     if parent_data.present?
-      spree.polymorphic_url([:admin, parent, model_class], options)
+     spree.polymorphic_url([:admin, parent, model_class], options)
     else
       spree.polymorphic_url([:admin, model_class], options)
     end

@@ -4,7 +4,8 @@ Spree::Core::Engine.add_routes do
     get '/search/products', to: "search#products", as: :search_products
     get '/abc/:id',to: "products#abc",as: :abc
      post '/cde/:id',to: "products#cde",as: :cde
-      get '/order/:id', to: "orders#data",as: :data
+     get '/order/:id', to: "orders#data",as: :data
+
     resources :dashboards, only: [] do
       collection do
         get :home
@@ -61,7 +62,7 @@ Spree::Core::Engine.add_routes do
         post :update_values_positions
       end
     end
-
+     
     delete '/option_values/:id', to: "option_values#destroy", as: :option_value
 
     resources :properties do
@@ -138,7 +139,7 @@ Spree::Core::Engine.add_routes do
     end
 
     resources :return_items, only: [:update]
-
+  
     resources :taxonomies do
       collection do
         post :update_positions

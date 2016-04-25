@@ -26,6 +26,7 @@ module Spree
       @label=Label.all
       end
       def cde
+        byebug
         params[:lab].each do |a|
           b=a.first
           a.second.each do |c|
