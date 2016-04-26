@@ -26,7 +26,7 @@ module Spree
       @label=Label.all
       end
       def cde
-        byebug
+        
         params[:lab].each do |a|
           b=a.first
           a.second.each do |c|
@@ -38,7 +38,7 @@ module Spree
             @ov.save
             end
         end
-      
+       redirect_to edit_admin_product_path(params[:id]) 
       end
       def update
         if params[:product][:taxon_ids].present?
