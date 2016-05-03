@@ -1,32 +1,5 @@
 <% cache [I18n.locale, current_currency, @product] do %>
-  <div data-hook="product_show" itemscope itemtype="http://schema.org/Product">
-    <% @body_id = 'product-details' %>
-
-    <div class="columns six alpha" data-hook="product_left_part">
-      <div class="row" data-hook="product_left_part_wrap">
-
-        <div id="product-images" data-hook="product_images">
-          <div id="main-image" data-hook>
-            <%= render :partial => 'image' %>
-          </div>
-          <div id="thumbnails" data-hook>
-            <%= render :partial => 'thumbnails',:locals => {:color => @arr.uniq.first} %>
-          </div>
-        </div>
-
-        <div data-hook="product_properties">
-          <%= render :partial => 'properties' %>
-        </div>
-
-        <div data-hook="promotions">
-          <%= render :partial => 'promotions' %>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="columns ten omega" data-hook="product_right_part">
-      <div class="row" data-hook="product_right_part_wrap">
+    <div class="col-md-4">
 
         <div id="product-description" data-hook="product_description">
 
@@ -36,14 +9,47 @@
             <%= product_description(@product) rescue Spree.t(:product_has_no_description) %>
           </div>
 
-          <div id="cart-form" data-hook="cart_form">
+         
+
+        </div>
+</div>
+  <div data-hook="product_show" itemscope itemtype="http://schema.org/Product">
+    <% @body_id = 'product-details' %>
+
+    
+      
+<div class="col-md-4">
+        <div id="product-images" data-hook="product_images">
+          <div id="main-image" data-hook>
+            <%= render :partial => 'image' %>
+          </div>
+          <div id="thumbnails" data-hook>
+            <%= render :partial => 'thumbnails',:locals => {:color => @arr.uniq.first} %>
+          </div>
+        </div>
+        </div>
+         
+    </div>
+<div class="col-md-4">
+ <div id="cart-form" data-hook="cart_form">
             <%= render :partial => 'cart_form' %>
           </div>
 
+        <div data-hook="product_properties">
+          <%= render :partial => 'properties' %>
         </div>
 
-        <%= render :partial => 'taxons' %>
+        <div data-hook="promotions">
+          <%= render :partial => 'promotions' %>
+        </div>
+        </div>
 
+     
+
+
+   
+    
+       
       </div>
     </div>
     
