@@ -1,3 +1,51 @@
-$('#labels').html("<%=escape_javascript(render partial: 'labels')%>");
+$('.modal-content').html("<%=escape_javascript(render partial: 'labelsdata')%>");
 
-$('.modal').modal('show') 
+$('.modal').modal('show');
+
+$(document).ready(function() {
+  	$('#rootwizard').bootstrapWizard({onTabShow: function(tab, navigation, index) {
+		var $total = navigation.find('li').length;
+		var $current = index+1;
+		var $percent = ($current/$total) * 100;
+		$('#rootwizard').find('.bar').css({width:$percent+'%'});
+		
+		// If it's the last tab then hide the last button and show the finish instead
+		if($current >= $total) {
+			$('#rootwizard').find('.pager .next').hide();
+			$('#rootwizard').find('.pager .finish').show();
+			$('#rootwizard').find('.pager .finish').removeClass('disabled');
+		} else {
+			$('#rootwizard').find('.pager .next').show();
+			$('#rootwizard').find('.pager .finish').hide();
+		}
+		if($current == $total){
+		
+             var a=[]		   
+			<%@optionvalues.each do |optionvalue|%>
+			<% @labels=OptionvalueLabel.where("option_value_id = ? and product_id =?",optionvalue,@product.id)%>
+			<%@labels.each do |label|%>
+
+			a.push($("#data_<%=label.id%>").val());
+			
+			<%end%>
+			<%end%>
+			var i= $total -1;
+			var q=0
+		     
+		     <%@optionvalues.each do |optionvalue|%>
+			<% @labels=OptionvalueLabel.where("option_value_id = ? and product_id =?",optionvalue,@product.id)%>
+			<%@labels.each do |label|%>
+            
+			$("#tab"+i).find("#data_<%=label.id%>").val(a[q])
+			q=q+1;
+			<%end%>
+			<%end%>
+		     
+		  		}
+
+	}});
+	
+});
+
+
+

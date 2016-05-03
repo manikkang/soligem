@@ -53,11 +53,20 @@ module Spree
      end
      
         params[:data].each do |data|
+         
+          if Labeldatum.exists?( order_id: order.id,optionvalue_label_id: data.first )
+          @data=Labeldatum.where(order_id: order.id,optionvalue_label_id: data.first).first
+         
+          @data.data=data.second
+          @data.save
+
+          else
           @data=Labeldatum.new
           @data.order_id=order.id
           @data.optionvalue_label_id=data.first
           @data.data=data.second
           @data.save
+        end
         end
       
         respond_with(order) do |format|

@@ -1,0 +1,63 @@
+<div id="rootwizard">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+  <ul> 
+      <%a=@optionvalues.count%>
+      <%@optionvalues.each_with_index do |optionvalue,i|%>
+      <% @insert=Spree::OptionValue.find(optionvalue)%>
+      <li><a href="#tab<%=i%>" data-toggle="tab"><%=@insert.name%></a></li>
+       <%end%>
+       <li><a href="#tab<%=a%>" data-toggle="tab">Summary</a></li>
+  </ul>
+   </div>
+    </div>
+  </div>
+  <div class="tab-content">
+       <%@optionvalues.each_with_index do |optionvalue,i|%>
+          <% @labels=OptionvalueLabel.where("option_value_id = ? and product_id =?",optionvalue,@product.id)%> 
+         
+      <div class="tab-pane" id="tab<%=i%>">
+        
+       
+        <%@labels.each do |label|%>
+        <%=label.label.label%>
+      
+        <%if Labeldatum.exists?( order_id: params[:order_id],optionvalue_label_id: label.id )%>
+      
+        <%=text_field_tag  "data[#{label.id}]",nil,:placeholder => label.label.placeholder,:value => Labeldatum.where(order_id: params[:order_id],optionvalue_label_id: label.id).first.data%>
+        <%else%>
+        <%=text_field_tag  "data[#{label.id}]",nil,:placeholder => label.label.placeholder%>
+        <%end%>
+        <%end%>
+      </div>
+      <%end%>
+        
+      <div class="tab-pane" id="tab<%=a%>">
+      <%@optionvalues.each do |optionvalue|%>
+   
+       <% @insert=Spree::OptionValue.find(optionvalue)%>
+       <div>
+       <div><%=@insert.name%></div>
+      <% @labels=OptionvalueLabel.where("option_value_id = ? and product_id =?",optionvalue,@product.id)%> 
+     <%@labels.each do |label|%>
+        
+      
+     <%=label.label.label%>
+    <%=text_field_tag  "data[#{label.id}]",nil,:placeholder => label.label.placeholder%>
+     
+
+   <%end%>
+   </div>
+   <%end%>
+
+      </div>       
+    <ul class="pager wizard">
+  
+      <li class="previous"><a href="javascript:;">Previous</a></li>
+     
+        <li class="next"><a href="javascript:;">Next</a></li>
+      <li class="next finish" style="display:none;"><button type="submit">Finish</button></li>
+    </ul>
+  </div>  
+</div>

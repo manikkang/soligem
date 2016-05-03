@@ -1,5 +1,30 @@
-<% variant = line_item.variant -%>
+<%@product_line_items = order_form.object.line_items.includes(:variant).group_by { |variant| variant.product }%>
+
+<%@product_line_items.each do |product,line_items|%>
+<div>
+<table id="cart-detail" data-hook>
+  <thead>
+  <%cart_edit=[]%>
+    <%line_items.each do |ab|%>
+     <%cart_edit << ab.variant_id%>
+      <%end%>
+    <tr><h2><%=product.name%></h2><%=link_to "edit",product_path(:id=>product.id,:cart_edit =>cart_edit,:order_id => @order.id)%></tr>
+   
+    <tr data-hook="cart_items_headers">
+      <th class="cart-item-description-header" colspan="2"><%= Spree.t(:item) %></th>
+      <th class="cart-item-price-header"><%= Spree.t(:price) %></th>
+      <th class="cart-item-quantity-header"><%= Spree.t(:qty) %></th>
+      <th class="cart-item-total-header"><%= Spree.t(:total) %></th>
+      <th class="cart-item-delete-header"></th>
+    </tr>
+  </thead>
+  <tbody id="line_items" data-hook>
+
+  <%line_items.each do |line_item|%>
+  <%variant=line_item.variant%>
+
 <%= order_form.fields_for :line_items, line_item do |item_form| -%>
+
   <tr class="<%= cycle('', 'alt') %> line-item">
     <td class="cart-item-image" data-hook="cart_item_image">
       <% if variant.images.length == 0 %>
@@ -33,4 +58,8 @@
       <%= link_to image_tag('icons/delete.png'), '#', :class => 'delete', :id => "delete_#{dom_id(line_item)}" %>
     </td>
   </tr>
+  <%end%>
 <% end -%>
+</tbody>
+</div>
+<%end%>

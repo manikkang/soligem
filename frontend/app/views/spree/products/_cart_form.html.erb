@@ -5,10 +5,15 @@
       <div id="product-variants" class="columns five alpha">
         <h6 class="product-section-title"><%= Spree.t(:variants) %></h6>
         <ul>
+           <%if params[:cart_edit].present?%>
+           
+           <%color=Spree::Variant.find(params[:cart_edit].first).option_values.select{|v| v.option_type.id==2}.first%>
+           <li><%=color.name%></li>
+           <%else%>       
            <%@arr.uniq.each do |color|%>
            <li> <%=link_to color.name,color_path(@product.id,color.id), :remote => true%></li>
-
-            <%end%>
+              <%end%>
+              <%end%>
         </ul>
       </div>
 
@@ -36,12 +41,7 @@
           <% end %>
         </div>
 
-        <div class="add-to-cart">
-         
-          <%= button_tag :class => 'large primary', :id => 'add-to-cart-button', :type => :submit do %>
-            <%= Spree.t(:add_to_cart) %>
-          <% end %>
-        </div>
+       
       </div>
     <% else %>
         <div id="product-price">
@@ -50,12 +50,19 @@
         </div>
     <% end %>
   </div>
-  <div id="insert"><%=render partial: "inserts", :locals => {:color => @arr.uniq.first}%></div>
-  
+  <%if params[:cart_edit].present?%>
  
-  <div id="labels"></div>
+  <div id="insert"><%=render partial: "inserts", :locals => {:color => Spree::Variant.find(params[:cart_edit].first).option_values.select{|v| v.option_type.id==2}.first
+}%></div>
+  <%else%>
+  <div id="insert"><%=render partial: "inserts", :locals => {:color => @arr.uniq.first}%></div>
+  <%end%>
+ 
+  <div id="labels">
+    <%=render partial: "labels"%>
+  </div>
 <% end %>
-<button id="addlabel">Add Label</button>
+<button id="addlabel" type="button">Add Label</button>
 <script type="text/javascript">
   $(document).ready(function(){
    
@@ -69,8 +76,20 @@
       $.ajax({
          type: 'GET',
            url: '/labels',
-    data: { variants: checkboxesChecked,product_id: <%=@product.id%>}
+    data: { variants: checkboxesChecked,product_id: <%=@product.id%>,<%if params[:order_id].present?%>
+      order_id: <%=params[:order_id]%>
+      <%end%>}
    });
     })
+    <%if params[:cart_edit].present? %>
+        
+  <%params[:cart_edit].each do |variant_id|%>
+   
+  $("input[type=checkbox][value=<%=variant_id%>]").prop('disabled', true);
+  $("input[type=checkbox][value=<%=variant_id%>]").prop('checked', true);
+  <%end%>
+  <%end%>
   })
+
+  
 </script>

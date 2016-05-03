@@ -1,32 +1,7 @@
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-    <%@optionvalues.each do |optionvalue|%>
     
-    <% @insert=Spree::OptionValue.find(optionvalue)%>
-  <div>
-    <div><%=@insert.name%></div>
-    <% @labels=OptionvalueLabel.where("option_value_id = ? and product_id =?",optionvalue,@product.id)%> 
-    <%@labels.each do |label|%>
-      <div>  
-      <div>
-      <%=label.label.label%>
-     <%=text_field_tag  "data[#{label.id}]",nil,:placeholder => label.label.placeholder%>
-      </div>
-
-    <%end%>
-   
-    <%end%>
-
-    </div>
-    </div>
     </div>
   </div>
-</div>
- <div class="add-to-cart">
-         
-          <%= button_tag :class => 'large primary', :id => 'add-to-cart-button', :type => :submit do %>
-            <%= Spree.t(:add_to_cart) %>
-          <% end %>
-        </div>
-      </div>
+

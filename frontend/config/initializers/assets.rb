@@ -6,5 +6,6 @@ Rails.application.config.assets.precompile += %w[
   credit_cards/*
   icons/delete.png
   spree/bootstrap.js
+  
   custom.css
 ]

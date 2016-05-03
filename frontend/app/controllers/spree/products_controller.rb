@@ -16,7 +16,7 @@ module Spree
     end
 
     def show
-   
+  
       @variants = @product.variants_including_master.active(current_currency).includes([:option_values, :images])
       @product_properties = @product.product_properties.includes(:property)
        @arr = []
@@ -33,6 +33,7 @@ module Spree
 
     end
     def label
+     
       @optionvalues= []
     @product=Product.find(params[:product_id]) 
      params[:variants].each do |variant|
