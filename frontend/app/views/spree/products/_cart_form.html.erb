@@ -4,14 +4,14 @@
     <% if @product.variants_and_option_values(current_currency).any? %>
       <div id="product-variants" class="columns five alpha">
         <h6 class="product-section-title"><%= Spree.t(:variants) %></h6>
-        <ul>
+        <ul style="list-style-type: none; display: inline-flex;">
            <%if params[:cart_edit].present?%>
            
            <%color=Spree::Variant.find(params[:cart_edit].first).option_values.select{|v| v.option_type.id==2}.first%>
-           <li><%=color.name%></li>
+           <li><%=image_tag color.photo.url(:circle)%></li>
            <%else%>       
            <%@arr.uniq.each do |color|%>
-           <li> <%=link_to color.name,color_path(@product.id,color.id), :remote => true%></li>
+           <li> <%=link_to image_tag(color.photo.url(:circle)),color_path(@product.id,color.id), :remote => true%></li>
               <%end%>
               <%end%>
         </ul>
