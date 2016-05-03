@@ -4,7 +4,9 @@ module Spree
     helper 'spree/products'
 
     respond_to :html
-
+def index
+      @taxons = Taxons.all
+    end
     def show
       @taxon = Taxon.find_by_permalink!(params[:id])
       return unless @taxon

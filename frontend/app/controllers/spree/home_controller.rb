@@ -9,6 +9,7 @@ module Spree
       @products = @searcher.retrieve_products
       @taxonomies = Spree::Taxonomy.includes(root: :children)
       @taxons =  Taxon.where("parent_id IS NOT NULL")
+
     end
   end
 end
