@@ -8,7 +8,10 @@ module Spree
      
     has_many :option_values_variants, dependent: :destroy
     has_many :variants, through: :option_values_variants
-
+     has_attached_file :photo, styles: { medium: "300x300>", thumb: "100x100>", circle: "50x50>" }, default_url: "/images/:style/missing.png"
+  validates_attachment :photo,
+  content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] }
+    
     validates :name, presence: true, uniqueness: { scope: :option_type_id, allow_blank: true }
     validates :presentation, presence: true
 

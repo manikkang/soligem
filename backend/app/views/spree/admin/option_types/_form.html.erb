@@ -14,4 +14,11 @@
       <%= f.error_message_on :presentation %>
     <% end %>
   </div>
+  <div class="omega eight columns">
+    <%= f.field_container :photo do %>
+      
+       <%= f.file_field :photo, :class => "fullwidth" %>
+      
+    <% end %>
+  </div>
 </div>

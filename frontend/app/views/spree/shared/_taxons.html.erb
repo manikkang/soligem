@@ -1,0 +1,21 @@
+<ul id="products" class="inline product-listing" data-hook>
+  <% @taxons.each do |taxon| %>
+  <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+    <div class="hovereffect">
+  <%= image_tag taxon.icon.url(:normal), itemprop: "image", class: "img-responsive" %>
+  <div class="overlay">
+  <% if taxon.products.any? %>
+    <% taxon.products.each do |product| %>
+      
+      <p><%= link_to "#{taxon.name} ", product_path(product) %></p>
+    <% end %></div>
+  <% else %>
+    <p>No products in <strong>Taxon (<%= taxon.name %>)</strong></p>
+  <% end %></div></div>
+<% end %>
+    
+  </ul>
+
+
+
+ 

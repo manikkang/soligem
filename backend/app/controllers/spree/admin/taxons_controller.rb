@@ -4,6 +4,7 @@ module Spree
       respond_to :html, :json, :js
 
       def index
+        @taxons = Taxon.all
       end
 
       def search
