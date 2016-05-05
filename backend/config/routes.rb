@@ -5,13 +5,15 @@ Spree::Core::Engine.add_routes do
     get '/abc/:id',to: "products#abc",as: :abc
      post '/cde/:id',to: "products#cde",as: :cde
      get '/order/:id', to: "orders#data",as: :data
-
+     get "/paper/:id",to: "products#paper",as: :paper
+     post "/papersave/:id",to: "products#papersave",as: :papersave
     resources :dashboards, only: [] do
       collection do
         get :home
       end
     end
     resources :labels
+    resources :papers
     resources :promotions do
       resources :promotion_rules
       resources :promotion_actions
@@ -27,6 +29,10 @@ Spree::Core::Engine.add_routes do
     end
     resources :states
     resources :tax_categories
+
+    
+     
+   
 
     resources :products do
       resources :product_properties do

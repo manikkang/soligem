@@ -23,6 +23,7 @@
       <%unless @product.optionvalue_labels.any?%>
        <%=link_to "Add Labels",admin_abc_path(@product)%>
        <%end%>
+       <%=link_to "add paper Quality", admin_paper_path(@product)%>
     </ul>
   </nav>
 <% end %>

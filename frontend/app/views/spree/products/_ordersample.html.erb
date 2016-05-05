@@ -1,0 +1,12 @@
+<%= form_tag(populate_orders_path) do%>
+
+<ul>
+<%@arr.uniq.each do |color|%>
+          <%=label_tag color.name%>
+          <%=radio_button_tag "selected",color.id%>
+          <%= hidden_field_tag "product_id", @product.id %>
+          <%=hidden_field_tag "sample", true%>
+          <%end%>
+</ul>              
+<%= submit_tag( "Sample Order" ) %>
+<%end%>

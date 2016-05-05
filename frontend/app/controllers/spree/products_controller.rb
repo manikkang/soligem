@@ -14,9 +14,9 @@ module Spree
       @products = @searcher.retrieve_products
       @taxonomies = Spree::Taxonomy.includes(root: :children)
     end
-
+   
     def show
-  
+     
       @variants = @product.variants_including_master.active(current_currency).includes([:option_values, :images])
       @product_properties = @product.product_properties.includes(:property)
        @arr = []
@@ -34,16 +34,35 @@ module Spree
     end
     def label
      
-      @optionvalues= []
+      @optionvalues = []
     @product=Product.find(params[:product_id]) 
      params[:variants].each do |variant|
      @variant=Variant.find(variant)
     @optionvalues << @variant.option_values.select{|b| b.option_type.id == 4}.first.id
    end
-
-
-
-    end
+end
+def total 
+  
+  @gtotal=0
+  @tquantity=0
+  params[:variantquantity].each do |variantquantity|
+    variant=variantquantity.first
+    price=Spree::Variant.find(variant).price.to_i
+    quantity=variantquantity.second.to_i
+    @tquantity+=quantity
+    @gtotal=@gtotal+price*quantity
+  end
+  @paper=Paper.find(params[:paper])
+  @paper_per=@paper.cost
+  @gtotalp=@gtotal+(@tquantity*@paper_per)
+  @variants=[]
+  @quantity=[]
+  params[:variantquantity].each do |variantquantity|
+     @variants << Spree::Variant.find(variantquantity.first)
+     @quantity << variantquantity.second
+  end
+ 
+end
 
     private
 

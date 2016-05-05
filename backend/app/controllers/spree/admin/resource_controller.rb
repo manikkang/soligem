@@ -72,6 +72,7 @@ class Spree::Admin::ResourceController < Spree::Admin::BaseController
   end
 
   def update_positions
+
     ActiveRecord::Base.transaction do
       params[:positions].each do |id, index|
         model_class.find(id).set_list_position(index)
@@ -131,10 +132,10 @@ class Spree::Admin::ResourceController < Spree::Admin::BaseController
   end
 
   def load_resource
-      
+     
     if member_action?
       @object ||= load_resource_instance
-
+      
       # call authorize! a third time (called twice already in Admin::BaseController)
       # this time we pass the actual instance so fine-grained abilities can control
       # access to individual records, not just entire models.

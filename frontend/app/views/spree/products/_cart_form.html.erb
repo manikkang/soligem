@@ -4,19 +4,28 @@
     <% if @product.variants_and_option_values(current_currency).any? %>
       <div id="product-variants" class="columns five alpha">
         <h6 class="product-section-title"><%= Spree.t(:variants) %></h6>
-        <ul>
+        <ul style="list-style-type: none; display: inline-flex;">
            <%if params[:cart_edit].present?%>
            
            <%color=Spree::Variant.find(params[:cart_edit].first).option_values.select{|v| v.option_type.id==2}.first%>
-           <li><%=color.name%></li>
+           <li><%=image_tag color.photo.url(:circle)%></li>
            <%else%>       
            <%@arr.uniq.each do |color|%>
-           <li> <%=link_to color.name,color_path(@product.id,color.id), :remote => true%></li>
+           <li> <%=link_to image_tag(color.photo.url(:circle)),color_path(@product.id,color.id), :remote => true%></li>
               <%end%>
               <%end%>
         </ul>
+        <div id="paperquality">
+       
+      <%@product.papers.each do |paper|%>
+      <div>
+      <%=paper.paper%>
+      <%=radio_button_tag "paper",paper.id ,:class => "paper"%>
       </div>
-
+      <%end%>
+    </div>
+      </div>
+      
     <% else %>
       <%= hidden_field_tag "variant_id", @product.master.id %>
     <% end %>
@@ -63,6 +72,8 @@
   </div>
 <% end %>
 <button id="addlabel" type="button">Add Label</button>
+<button id="total" type="button">Check Cost</button>
+<div id="totalsummary"></div>
 <script type="text/javascript">
   $(document).ready(function(){
    
@@ -89,7 +100,22 @@
   $("input[type=checkbox][value=<%=variant_id%>]").prop('checked', true);
   <%end%>
   <%end%>
-  })
+  $("input[type=checkbox],input[name=paper],input[type=number]").change(function(){
+   
+   var paper=$('input[name=paper]:checked').val()
+    var checkboxesChecked = {}
+     $("input[type=checkbox]:checked").each(function(){
+          var variant = $(this).val();
+          var quantity =$(this).next("input[type=number]:enabled").val()
+          checkboxesChecked[variant]=quantity;
+           });
+            $.ajax({
+         type: 'GET',
+           url: '/total',
+           data:{ variantquantity: checkboxesChecked,paper: paper }
+           })   
+  });
 
+});
   
 </script>

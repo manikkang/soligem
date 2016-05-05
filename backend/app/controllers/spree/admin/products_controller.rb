@@ -40,6 +40,21 @@ module Spree
         end
        redirect_to edit_admin_product_path(params[:id]) 
       end
+      def paper
+       
+        @product=Product.friendly.find(params[:id])
+        @papers=Paper.all
+      end
+      def papersave
+        byebug
+        params[:paper].each do |paper|
+        @paperproduct=Paperproduct.new
+        @paperproduct.paper_id=paper
+        @paperproduct.product_id=@product.id
+        @paperproduct.save
+        end
+        redirect_to edit_admin_product_path(params[:id]) 
+      end
       def update
         if params[:product][:taxon_ids].present?
           params[:product][:taxon_ids] = params[:product][:taxon_ids].split(',')

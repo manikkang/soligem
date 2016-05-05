@@ -15,7 +15,8 @@ module Spree
     has_many :optionvalue_labels
     has_many :product_option_types, dependent: :destroy, inverse_of: :product
     has_many :option_types, through: :product_option_types
-
+    has_many :papers ,through: :paperproducts
+    has_many  :paperproducts
     has_many :product_properties, dependent: :destroy, inverse_of: :product
     has_many :properties, through: :product_properties
     has_many :variant_property_rules

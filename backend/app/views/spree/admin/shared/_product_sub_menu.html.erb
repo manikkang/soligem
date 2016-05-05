@@ -20,4 +20,7 @@
    <% if can? :admin, Label %>
     <%= tab :labels%>
   <% end %>
+  <% if can? :admin, Paper %>
+    <%= tab :papers%>
+  <% end %>
 </ul>

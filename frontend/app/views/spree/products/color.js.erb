@@ -5,3 +5,18 @@ $(".thumbnails").find("li").mouseenter(function(e){
   
   $("#main-image img").attr ("src",$(e.currentTarget).find("a").attr('href'))
   });
+ $("input[type=checkbox],input[name=paper],input[type=number]").change(function(){
+   
+   var paper=$('input[name=paper]:checked').val()
+    var checkboxesChecked = {}
+     $("input[type=checkbox]:checked").each(function(){
+          var variant = $(this).val();
+          var quantity =$(this).next("input[type=number]:enabled").val()
+          checkboxesChecked[variant]=quantity;
+           });
+            $.ajax({
+         type: 'GET',
+           url: '/total',
+           data:{ variantquantity: checkboxesChecked,paper: paper }
+           })   
+  });

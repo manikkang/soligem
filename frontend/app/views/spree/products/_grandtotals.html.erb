@@ -1,0 +1,39 @@
+<div>
+	
+	<div class="row">
+     <div class="col-md-6">
+     
+     	<%@variants.each do |variant|%>
+     	<div>
+     	 <%=variant.option_values.select{|b| b.option_type.id ==4 }.first.name%>
+         <%=variant.price%>
+     	</div>
+     	<%end%>
+     </div>
+     <div class=" col-md-2">
+     <%@variants.each do |variant|%>
+      <div>X</div>
+     <%end%>
+     </div>
+     <div class="col-md-4">
+     <% @quantity.each do |quantity|%>
+     <div><%=quantity%></div>
+     <%end%>
+     </div>
+	</div>
+	<div class="row">
+	<div class="col-md-4">Total</div>
+	<div class="col-md-4 col-md-offset-4">
+	<%=@gtotal%>
+	</div> 
+	</div>
+	<div class="row">
+		<div class="col-md-6">Paper-<%=@paper.paper%></div>
+		<div class="col-md-4 col-md-offset-2"><%=@tquantity*@paper_per%></div>
+	</div>
+	<div class="row">
+	<div class="col-md-4"><b>GRAND TOTAL</b></div>
+	<div class="col-md-4 col-md-offset-4">
+	<%=@gtotalp%>
+	</div>
+</div>

@@ -9,7 +9,7 @@ Spree::Core::Engine.add_routes do
   patch '/checkout/update/:state', to: 'checkout#update', as: :update_checkout
   get '/checkout/:state', to: 'checkout#edit', as: :checkout_state
   get '/checkout', to: 'checkout#edit', as: :checkout
-
+  get "/total",to: "products#total",as: :total
   populate_redirect = redirect do |_params, request|
     request.flash[:error] = Spree.t(:populate_get_error)
     request.referer || '/cart'

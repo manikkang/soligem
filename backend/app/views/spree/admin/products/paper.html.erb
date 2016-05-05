@@ -1,0 +1,10 @@
+<%= render 'spree/admin/shared/product_tabs', :current => 'Product Properties' %>
+<%= form_tag(admin_papersave_path) do %>
+<%@papers.each do |paper|%>
+<%=paper.paper%>
+<%= check_box_tag "paper[]", paper.id %>
+
+
+<%end%>
+<%= submit_tag "Confirm" %>
+<%end%>
