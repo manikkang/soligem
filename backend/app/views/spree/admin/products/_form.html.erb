@@ -147,8 +147,12 @@
         <%= f.label :option_type_ids, Spree::OptionType.model_name.human(count: :other) %>
         <%= f.hidden_field :option_type_ids, :value => @product.option_type_ids.join(',') %>
       <% end %>
+        <%= f.label :status%>
+        <%= f.select :status, [["Publish", true], ["Draft", false]]%>
     </div>
   </div>
+  
+          
 
   <div data-hook="admin_product_form_meta" class="alpha omega twelve columns">
     <div data-hook="admin_product_form_meta_title">

@@ -56,6 +56,7 @@ module Spree
         redirect_to edit_admin_product_path(params[:id]) 
       end
       def update
+     
         if params[:product][:taxon_ids].present?
           params[:product][:taxon_ids] = params[:product][:taxon_ids].split(',')
         end
@@ -67,8 +68,30 @@ module Spree
             param_attrs[:option_value_ids] = param_attrs[:option_value_ids].split(',')
           end
         end
+        if params[:product][:status].present?
+         if params[:product][:status] == "true"
+           if params[:product][:taxon_ids].present?
+                 @taxon=Spree::Taxon.find(params[:product][:taxon_ids]).first
+                  @taxon.status = true
+                  @taxon.save
+            end
+          end
+          
+         end
         invoke_callbacks(:update, :before)
         if @object.update_attributes(permitted_resource_params)
+  
+          if params[:product][:status].present?
+          if params[:product][:status] == "false"
+             @taxon=Spree::Taxon.find(params[:product][:taxon_ids]).first
+          if @taxon.products.select{|b| b.status==true}.present?
+             @taxon.status = true
+          else
+              @taxon.status = false
+              @taxon.save
+          end
+          end
+         end
           invoke_callbacks(:update, :after)
           flash[:success] = flash_message_for(@object, :successfully_updated)
           respond_with(@object) do |format|
